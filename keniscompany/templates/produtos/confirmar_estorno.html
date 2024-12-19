@@ -1,0 +1,11 @@
+{% extends 'produtos/base.html' %}
+{% block conteudo %}
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <h1 class="text-align: center;"> Confirmar estorno da venda {{item.vendas}}</h1>
+        <button class="btn btn-default"><a href="{% url 'produtos' %}">Cancelar</a></button>
+        <button class="btn btn-danger" type="submit">Confirmar</button>
+    </form>
+</div>
+{% endblock %}

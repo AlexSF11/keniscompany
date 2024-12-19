@@ -1,0 +1,36 @@
+{% extends 'produtos/base.html' %}
+{% block conteudo %}
+<h1 style="text-align: center; margin: 20px 0 10px 0;">Vendas</h1>
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <button class='btn btn-success' style='margin-bottom: 10px;'><a style='color:white;'
+                href="{% url 'form_produtos' %}">Cadastrar Produto</a></button>
+        <button class='btn btn-primary' style='margin-bottom: 10px; '><a style='color:white;'
+                href="{% url 'vender' %}">Vender Produto</a></button>
+    </div>
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Cliente</th>
+                <th>Camisa</th>
+                <th>Quantidade</th>
+                <th>Data</th>
+                <th>Estornar</th>
+            </tr>
+        </thead>
+        {% for dado in dados %}
+        <tr>
+            <td>{{dado.id}}</td>
+            <td>{{dado.cliente}}</td>
+            <td>{{dado.produto_id}}</td>
+            <td>{{dado.quantidade}}</td>
+            <td>{{dado.data}}</td>
+            <td><button class='btn btn-danger'><a style='color:white;'
+                        href="{% url 'estornar' dado.id %}">Estornar</a></button></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

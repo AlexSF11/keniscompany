@@ -1,0 +1,43 @@
+{% extends 'produtos/base.html' %}
+{% block conteudo %}
+
+<h1 style='text-align: center; margin: 20px 0 10px 0;'>Produtos</h1>
+<div class='container'>
+    <div class="d-flex justify-content-between">
+        <button class='btn btn-success' style='margin-bottom: 10px;'><a style='color:white;'
+                href="{% url 'form_produtos' %}">Cadastrar Produto</a></button>
+        <button class='btn btn-primary' style='margin-bottom: 10px; '><a style='color:white;'
+                href="{% url 'vender' %}">Vender Produto</a></button>
+    </div>
+
+    <table class="table table-hover table-bordered">
+        <tr class="thead-dark">
+            <th>Código</th>
+            <th>Camisa</th>
+            <th>Tamanho</th>
+            <th>Custo</th>
+            <th>Valor</th>
+            <th>Estoque</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for dado in dados %}
+        <tr>
+
+            <td>{{dado.id}}</td>
+            <td>{{dado.camisa}}</td>
+            <td>{{dado.tamanho}}</td>
+            <td>{{dado.custo}}</td>
+            <td>{{dado.preco_venda}}</td>
+            <td>{{dado.estoque}}</td>
+
+            <td><button class='btn btn-info'><a style='color:white;'
+                        href="{% url 'editar' dado.id %}">Editar</a></button>
+            </td>
+            <td><button class='btn btn-danger'><a style='color:white;'
+                        href="{% url 'excluir' dado.id %}">Excluir</a></button></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
